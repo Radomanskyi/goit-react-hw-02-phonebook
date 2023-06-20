@@ -3,11 +3,25 @@ import contactFormCss from './contactForm.module.css'
 
 class ContactForm extends Component {
 state = {
-  name: ''
+    contacts: [],
+    name: '',
+    number: ''
 }
+
+handleChenche = ({target}) => {
+this.setState({
+  [target.name]: target.value,
+})
+}
+
+handleSubmit = (e) => {
+e.preventDefault()
+}
+
 render () {
   return (
-<div className={contactFormCss.container}>
+<form className={contactFormCss.container}
+onSubmit={this.handleSubmit}>
   <label>Name
   <input
   type="text"
@@ -15,13 +29,18 @@ render () {
   pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
   title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
   required
+  onChange={this.handleChenche}
+  value={this.state.name}
   />
   </label>
   <label>Number
-    <input type="number" />
+    <input type="number"
+    name="number"
+    onChange={this.handleChenche}
+    value={this.state.number} />
   </label>
   <button>Add contact</button>
-</div>
+</form>
   )
   }
 }
