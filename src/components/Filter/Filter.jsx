@@ -3,16 +3,18 @@ import React,{Component} from 'react';
 
 class Filter extends Component {
 state = {
- contact: [],
- filter: '',
- name: '',
- number: ''
+ name: ''
 }
 render () {
   return (
 <>
+  {' '}
   <label>Find contacts by name
-    <input type="text" />
+    <input
+    type="text"
+    name="name"
+    value={this.state.name}
+    onChange={this.handleChange} />
   </label>
 </>
   )

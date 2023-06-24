@@ -3,7 +3,6 @@ import contactFormCss from './contactForm.module.css'
 
 class ContactForm extends Component {
 state = {
-    contacts: [],
     name: '',
     number: ''
 }
@@ -15,8 +14,19 @@ this.setState({
 }
 
 handleSubmit = (e) => {
-e.preventDefault()
-}
+e.preventDefault();
+
+const newContact = {
+  name: this.state.name,
+  number: this.state.number,
+};
+
+this.props.addNewContact(newContact);
+    this.setState({
+      name:'',
+      number:''
+    })
+};
 
 render () {
   return (
@@ -34,12 +44,13 @@ onSubmit={this.handleSubmit}>
   />
   </label>
   <label>Number
-    <input type="number"
+    <input
+    type="number"
     name="number"
     onChange={this.handleChenche}
     value={this.state.number} />
   </label>
-  <button>Add contact</button>
+  <button type="submit">Add contact</button>
 </form>
   )
   }

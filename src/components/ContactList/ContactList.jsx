@@ -1,21 +1,22 @@
-import React,{Component} from 'react';
+import React from 'react';
 // import filterCss from './Filter.module.css'
 
-class ContactList extends Component {
-state = {
-    contacts: [],
-    name: '',
-    number: ''
-}
-render () {
+function ContactList({ contactsList, deleteContact }) {
+
   return (
-<>
-  <p>Eden Clements : 645-17-79</p>
-  <p>Hermione Kline : 443-89-12</p>
-  <p>Rosie Simpson : 459-12-56</p>
-</>
-  )
-  }
+    <div>
+      <ul>
+        {contactsList.map(({ id, name, number }) => {
+          return (
+            <li key={id}>
+              {name}: {number}
+              <button type='button' onClick={()=>{deleteContact(id)}}>Delete</button>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 }
 
-export default ContactList
+export default ContactList;
