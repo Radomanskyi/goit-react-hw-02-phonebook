@@ -1,5 +1,4 @@
 import React from 'react';
-// import filterCss from './Filter.module.css'
 
 function ContactList({ contactsList, deleteContact }) {
 
