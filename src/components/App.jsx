@@ -48,13 +48,17 @@ class App extends Component {
 
   findContact = name => {
     this.setState({
-      contacts: this.state.contacts.filter(elem =>
-        elem.name.toLowerCase().includes(name.trim().toLowerCase())
-      ),
+      filter: name.target.value,
     });
   };
 
+  contactFilter = () => {
+    return this.state.contacts.filter(({ name }) => {return name.toLowerCase().includes(this.state.filter.toLowerCase());
+    });
+  }
+
   render() {
+    const filteredContacts = this.contactFilter()
     return (
       <div>
         <h1>Phonebook</h1>
@@ -63,7 +67,7 @@ class App extends Component {
         <h2>Contacts</h2>
         <Filter findContact={this.findContact} />
     <ContactList
-    contactsList={this.state.contacts}
+    contactsList={filteredContacts}
     deleteContact={this.deleteContact} />
     {localStorage.setItem(`contacts`, JSON.stringify(this.state.contacts))}
       </div>
