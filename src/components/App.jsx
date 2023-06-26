@@ -17,8 +17,6 @@ class App extends Component {
   state = {
     contacts: load() === undefined ? [] : load(),
     filter: '',
-    name: '',
-    number: ''
   };
 
   addNewContact = contact => {
