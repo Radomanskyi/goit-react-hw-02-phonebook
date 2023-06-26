@@ -6,13 +6,6 @@ state = {
  name: ''
 }
 
-handleChange = event => {
-  this.setState({
-    [event.target.name]: event.target.value,
-  });
-  this.props.findContact(this.state.name);
-};
-
 render () {
   return (
 <>
@@ -22,7 +15,7 @@ render () {
     type="text"
     name="name"
     defaultValue={this.state.name}
-    onChange={this.handleChange} />
+    onChange={this.props.findContact} />
   </label>
 </>
   )
